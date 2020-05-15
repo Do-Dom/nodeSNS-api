@@ -1,0 +1,21 @@
+doctype
+html
+  head
+    title 프론트 API 요청
+  body
+    h1 this is index
+    #result
+    script.
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === xhr.DONE) {
+          if (xhr.status === 200) {
+            document.querySelector('#result').textContent = xhr.responseText;
+          } else {
+            console.error(xhr.responseText);
+          }
+        }
+      };
+      xhr.open('POST', 'http://localhost:8002/v2/token');
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.send(JSON.stringify({ clientSecret: '#52439171-c9d1-4210-a448-062cfb7aed2f'));
